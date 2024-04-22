@@ -1,10 +1,18 @@
 from flask import Flask, redirect, render_template, url_for, request, flash, session
-
 from controller.catalogue import catalogue
+from alchemyClasses import db
+from controller.ControllerUsuario import usuario_blueprint
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://lab:Developer123!@localhost:3306/Tienda'
+app.config.from_mapping(
+    SECRET_KEY='dev'
+)
+db.init_app(app)
+
 app.register_blueprint(catalogue)
-app.config['SECRET_KEY'] = 'dev'
+app.register_blueprint(usuario_blueprint)
+
 
 
 @app.route('/')
