@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,19 +24,21 @@ export default function Login() {
                 body: formdata
             }).then((response) => response.json()).then((data) => {
                 console.log(data);
-            });
-            /*const data = await response.json();
-            try{
-                if(data.status === 200){
-                    console.log('Login exitoso');
-                }else{
-                    console.log('Login fallido');
+                try{
+                    if(data['error']){
+                        alert("Usuario o contraseña incorrectos");
+                    }else{
+                        navigate('/home', data)
+                    }
+                }catch(error){
+                    console.log(error);
                 }
-            }catch(error){
-                console.log(error);
-            }*/
+            });
+            
         }catch(error){
+            console.log('Error en la petición');
             console.log(error);
+            alert('Ocurrió un error inesperado, inténtalo más tarde')
         }
     }
 
