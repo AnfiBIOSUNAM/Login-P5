@@ -31,7 +31,7 @@ def create_user(user):
 def read_user(idUsuario):
     user = mu.read_user(idUsuario)
     if user == -1:
-        return 
+        return json.dumps({'error': 'No se encontró el usuario'})
     return json.dumps(user.to_dict())
 
 @usuario_blueprint.route('/read', methods=['GET'])
@@ -40,6 +40,23 @@ def read_users():
     if users == -1:
         return json.dumps({'error': 'No hay usuarios'})
     return json.dumps([user.to_dict() for user in users])
+
+@usuario_blueprint.route('/login', methods=['GET','POST'])
+def login():
+    try:
+        correo = request.form.get('correo')
+        contraseña = request.form.get('contraseña')
+        print(correo)
+        print(contraseña)
+        user = mu.find_user_by_email_and_password(correo, contraseña)
+        print(json.dumps(user.to_dict()))
+        if user == -1:
+            return json.dumps({'error': 'No se encontró el usuario'})
+        session['user_id'] = user.idUsuario
+        print("Usuario logeado: "+str(session['user_id']))
+        return json.dumps(user.to_dict())
+    except:
+        return json.dumps({'error': 'Faltan datos'})
 
 ## Update
 ## Receives an id

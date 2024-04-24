@@ -13,6 +13,13 @@ def create_user(nombre, apPat, apMat, correo, telefono, contraseña, imagen, ven
     except:
         return -1
     
+def find_user_by_email_and_password(correo, contraseña):
+    user = Usuario.query.filter(Usuario.correo==correo, Usuario.contraseña==contraseña).first()
+    if user is None:
+        print('El usuario con correo: '+correo+' y contraseña: '+contraseña+' no existe')
+        return -1
+    return user
+    
 def read_user(idUsuario):
     user = Usuario.query.filter(Usuario.idUsuario==idUsuario).first()
     if user is None:
