@@ -1,5 +1,5 @@
 create database Tienda;
-use Tienda
+use Tienda;
 
 create user 'lab'@'localhost' identified by 'Developer123!';
 
