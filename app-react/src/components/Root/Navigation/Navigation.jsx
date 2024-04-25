@@ -31,18 +31,18 @@ export default function Navigation(){
                 </li>
                 {!usuario && (
                 <>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Registrarse</a>
-                  </li>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Cliente</a>
-                      <a class="dropdown-item" href="#">Vendedor</a>
-                    </div>
-                  </li>
+                  <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registrarse</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Cliente</a>
+                    <a class="dropdown-item" href="#">Vendedor</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./login">Login</a>
+                </li>
                 </>
-                )}
+                )}  
               </ul>
               <form class="d-flex">
                 <input class="form-control me-sm-2" type="search" placeholder="Search"></input>

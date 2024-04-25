@@ -1,5 +1,11 @@
+import { useNavigate} from "react-router-dom";
+import { UsuarioContext} from "../../../Context/usuario";
+import { useContext } from "react";
 
 export default function Login() {
+
+    const { usuario, setUsuario } = useContext(UsuarioContext);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,19 +27,22 @@ export default function Login() {
                 body: formdata
             }).then((response) => response.json()).then((data) => {
                 console.log(data);
-            });
-            /*const data = await response.json();
-            try{
-                if(data.status === 200){
-                    console.log('Login exitoso');
-                }else{
-                    console.log('Login fallido');
+                try{
+                    if(data['error']){
+                        alert("Usuario o contraseña incorrectos");
+                    }else{
+                        setUsuario(data);
+                        navigate('/home', data)
+                    }
+                }catch(error){
+                    console.log(error);
                 }
-            }catch(error){
-                console.log(error);
-            }*/
+            });
+            
         }catch(error){
+            console.log('Error en la petición');
             console.log(error);
+            alert('Ocurrió un error inesperado, inténtalo más tarde')
         }
     }
 
