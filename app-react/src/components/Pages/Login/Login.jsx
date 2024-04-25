@@ -32,6 +32,7 @@ export default function Login() {
                         alert("Usuario o contraseña incorrectos");
                     }else{
                         setCookie('userToken', data.correo, { path: '/', maxAge: 3600 * 24 * 7 });
+                        setCookie('user', data, { path: '/', maxAge: 3600 * 24 * 7 });
                         navigate('/home', data)
                     }
                 }catch(error){

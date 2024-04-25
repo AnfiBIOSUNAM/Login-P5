@@ -57,6 +57,11 @@ def login():
         return json.dumps(user.to_dict())
     except:
         return json.dumps({'error': 'Faltan datos'})
+    
+@usuario_blueprint.route('/logout', methods=['GET'])
+def logout():
+    session.pop('user_id', None)
+    return "Sesión cerrada"
 
 ## Update
 ## Receives an id

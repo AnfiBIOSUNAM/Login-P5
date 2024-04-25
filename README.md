@@ -1,6 +1,8 @@
 # PromeTienda
 
-Virtual env:
+## Para app-flask:
+
+Hacer virtual env con:
 
 pymysql
 Flask-SQLAlchemy
@@ -11,3 +13,8 @@ flask-cors
 
 Run:
 python -m flask run
+
+## Para app-react:
+
+npm install
+npm start

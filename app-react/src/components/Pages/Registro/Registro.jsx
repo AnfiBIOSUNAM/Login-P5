@@ -1,4 +1,5 @@
 export default function Registro() {
+    
     return(
         < >
         <h1>Login</h1>

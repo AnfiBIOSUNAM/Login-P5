@@ -1,7 +1,10 @@
 import './Navigation.css'
 import { NavLink } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 export default function Navigation(){
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
+
     return(
         <>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -26,16 +29,21 @@ export default function Navigation(){
                 <li class="nav-item">
                   <a class="nav-link" href="#">About</a>
                 </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registrarse</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Cliente</a>
-                    <a class="dropdown-item" href="#">Vendedor</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./login">Login</a>
-                </li>
+                
+                {!cookies.user && (
+                  <>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registrarse</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Cliente</a>
+                      <a class="dropdown-item" href="#">Vendedor</a>
+                    </div>
+                  </li><li class="nav-item">
+                    <NavLink to="/login" className="nav-link">Login</NavLink>
+                    </li>
+                  </>
+                )}
+                
               </ul>
               <form class="d-flex">
                 <input class="form-control me-sm-2" type="search" placeholder="Search"></input>
