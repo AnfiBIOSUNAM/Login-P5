@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 export default function Login() {
 
     const navigate = useNavigate();
+    const [cookies, setCookie] = useCookies(['userToken']);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,6 +30,7 @@ export default function Login() {
                     if(data['error']){
                         alert("Usuario o contraseña incorrectos");
                     }else{
+                        setCookie('userToken', data.correo, { path: '/', maxAge: 3600 * 24 * 7 });
                         navigate('/home', data)
                     }
                 }catch(error){
