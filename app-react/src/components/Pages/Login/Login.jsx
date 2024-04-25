@@ -28,7 +28,7 @@ export default function Login() {
             }).then((response) => response.json()).then((data) => {
                 console.log(data);
                 try{
-                    if(data['error'] === "usuario_incorrecto"){
+                    if(data['error'] === "usuario_inexistente"){
                         alert("Usuario incorrecto");
                     }else if(data['error'] === "contraseña_incorrecta"){
                           alert("Contraseña incorrecta");
