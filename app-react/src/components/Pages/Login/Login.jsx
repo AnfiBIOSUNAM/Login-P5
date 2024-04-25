@@ -28,8 +28,8 @@ export default function Login() {
             }).then((response) => response.json()).then((data) => {
                 console.log(data);
                 try{
-                    if(data['error'] === "usuario_inexistente"){
-                        alert("Usuario incorrecto");
+                    if(data['error'] === "usuario_incorrecto"){
+                        alert("Usuario inexistente");
                     }else if(data['error'] === "contraseña_incorrecta"){
                           alert("Contraseña incorrecta");
                     }else{
@@ -72,4 +72,5 @@ export default function Login() {
         </div>
         </>
     );
+}
 }
