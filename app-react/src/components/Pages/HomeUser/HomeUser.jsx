@@ -27,7 +27,7 @@ export default function HomeUser() {
             { cookies.user &&
             (
             <>
-            <p>Bienvenido a Prometienda</p>
+            <p>Bienvenido a Prometienda {cookies.user['nombre']}</p>
             <NavLink to="/" className="btn btn-primary" onClick={handleLogout}>Cerrar sesión</NavLink>
             </>
             )}
