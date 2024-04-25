@@ -48,7 +48,7 @@ def login():
         user = mu.find_user_by_email_and_password(correo, contraseña)
 
         if user == -1:
-            return json.dumps({'error': 'usuario_inexistente'})
+            return json.dumps({'error': 'usuario_incorrecto'})
         elif user == -2:
             return json.dumps({'error': 'contraseña_incorrecta'})
 
