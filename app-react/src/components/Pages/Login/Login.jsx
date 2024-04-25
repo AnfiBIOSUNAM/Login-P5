@@ -28,8 +28,10 @@ export default function Login() {
             }).then((response) => response.json()).then((data) => {
                 console.log(data);
                 try{
-                    if(data['error']){
-                        alert("Usuario o contraseña incorrectos");
+                    if(data['error'] === "usuario_incorrecto"){
+                        alert("Usuario inexistente");
+                    }else if(data['error'] === "contraseña_incorrecta"){
+                          alert("Contraseña incorrecta");
                     }else{
                         setCookie('userToken', data.correo, { path: '/', maxAge: 3600 * 24 * 7 });
                         setCookie('user', data, { path: '/', maxAge: 3600 * 24 * 7 });
