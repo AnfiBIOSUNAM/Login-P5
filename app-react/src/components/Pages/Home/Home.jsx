@@ -2,8 +2,10 @@ import './Home.css';
 
 export function Home() {
   return (
-    <div >
+    <>
+    <div className='fullscreen-shape'></div>
       <h1>Página de inicio</h1>
-    </div>
+    
+    </>
   );
 }

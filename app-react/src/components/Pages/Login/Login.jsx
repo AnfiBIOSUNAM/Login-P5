@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
+import '../../Style/Login.css'
 
 export default function Login() {
 
@@ -46,7 +47,8 @@ export default function Login() {
     }
 
     return (
-        < >
+        <>
+        <div className="form-container">
         <h1>Login</h1>
         <form class='m-5' onSubmit={handleSubmit}>
             <fieldset>
@@ -61,8 +63,10 @@ export default function Login() {
                 <div class='text-center'>
                 <button type="submit" class="btn btn-primary">Login</button>
                 </div>
+                
             </fieldset>
         </form>
+        </div>
         </>
     );
 }
