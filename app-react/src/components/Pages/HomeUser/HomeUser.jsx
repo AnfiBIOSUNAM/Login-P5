@@ -24,9 +24,19 @@ export default function HomeUser() {
         <>
             <div className="fullscreen-shape"></div>
             <h1>Home</h1>
+            { cookies.user &&
+            (
+            <>
             <p>Bienvenido a Prometienda</p>
             <NavLink to="/" className="btn btn-primary" onClick={handleLogout}>Cerrar sesión</NavLink>
-        </>
+            </>
+            )}
+            { !cookies.user &&(
+            <>
+            <p>Para acceder a esta página debes iniciar sesión</p>
+            </>
+            )}
+            </>
     )
 }
 
