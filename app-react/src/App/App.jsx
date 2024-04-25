@@ -5,8 +5,6 @@ import Login from '../components/Pages/Login/Login.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Error from '../components/Error.jsx';
 
-
-
 const router = createBrowserRouter(
   [
     { 
@@ -23,6 +21,5 @@ const router = createBrowserRouter(
 )
 
 export default function App() {
-
   return <RouterProvider router={router}/>
 }

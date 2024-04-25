@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import './Navigation.css'
 import { NavLink } from 'react-router-dom';
+import { UsuarioContext } from '../../../Context/usuario';
 
 export default function Navigation(){
+    const {usuario, setUsuario} = useContext(UsuarioContext)
     return(
         <>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -26,16 +29,20 @@ export default function Navigation(){
                 <li class="nav-item">
                   <a class="nav-link" href="#">About</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Registrarse</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Cliente</a>
-                    <a class="dropdown-item" href="#">Vendedor</a>
-                  </div>
-                </li>
+                {!usuario && (
+                <>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Registrarse</a>
+                  </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Cliente</a>
+                      <a class="dropdown-item" href="#">Vendedor</a>
+                    </div>
+                  </li>
+                </>
+                )}
               </ul>
               <form class="d-flex">
                 <input class="form-control me-sm-2" type="search" placeholder="Search"></input>
